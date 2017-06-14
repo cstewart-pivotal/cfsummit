@@ -7,8 +7,6 @@ jobs:
       trigger: true
     - task: build-artifact
       file: git-repo/ci/tasks/build-artifact.yml
-  - name: deploy-app-to-cf
-    plan:
     - put: deploy-app
       params:
         manifest: git-repo/manifest.yml
