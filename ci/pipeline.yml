@@ -2,18 +2,18 @@
 jobs:
   - name: deploy-feedback-bot
     plan:
-    - get: git-repo
+    - get: get-source-code
       public: true
       trigger: true
     - task: build-artifact
-      file: git-repo/feedback-service/ci/tasks/build-artifact.yml
+      file: git-repo/ci/tasks/build-artifact.yml
     - put: deploy-app
       params:
-        manifest: git-repo/feedback-service/manifest.yml
-        path: build-output/feedback-service-0.0.1-SNAPSHOT.jar
+        manifest: git-repo/manifest.yml
+        path: build-output/cfsummit-app-0.0.1-SNAPSHOT.jar
 
 resources:
-- name: git-repo
+- name: get-source-code
   type: git
   source:
     uri: {{GIT_REPO}}
