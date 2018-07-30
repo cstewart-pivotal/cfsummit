@@ -1,12 +1,12 @@
 ---
 jobs:
-  - name: build-artifact
+  - name: deploy-to-pcf
     plan:
     - get: git-repo
       trigger: true
     - task: build-artifact
       file: git-repo/ci/tasks/build-artifact.yml
-    - put: deploy-app
+    - put: pivotal-cloud-foundry
       params:
         manifest: git-repo/manifest.yml
         path: build-output/cfsummit-app-0.0.1-SNAPSHOT.jar
@@ -19,7 +19,7 @@ resources:
     branch: {{GIT_BRANCH}}
     private_key: {{GIT_PRIVATE_KEY}}
 
-- name: deploy-app
+- name: pivotal-cloud-foundry
   type: cf
   source:
     api: {{CF_API}}
