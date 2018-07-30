@@ -3,7 +3,6 @@ jobs:
   - name: build-artifact
     plan:
     - get: git-repo
-      public: true
       trigger: true
     - task: build-artifact
       file: git-repo/ci/tasks/build-artifact.yml
