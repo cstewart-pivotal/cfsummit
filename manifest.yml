@@ -1,5 +1,5 @@
 ---
 applications:
-- name: cfsummit-app
+- name: fun-app
   instances: 1
-  host: summit
+  random-route: true
